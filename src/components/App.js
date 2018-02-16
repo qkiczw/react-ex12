@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Todo from './Todo';
 import Header from './Header';
 import AddToDo from './AddToDo'
+import Todo from './Todo';
 
 class App extends React.Component {
 
@@ -17,17 +17,22 @@ class App extends React.Component {
                 {name: 'Todo 5', isFinished: true}
             ]
         }
-    }
+    };
+
+    onAddedprops = (newTodoFromInput) => {
+        let newTodo = {name: newTodoFromInput, isFinished: false};
+        this.setState(() => ({ todos: [...this.state.todos, newTodo]}));
+    };
 
     render() {
         const taskTable = Object.keys(this.state.todos);
         return (
       <React.Fragment>
           <Header/>
-          <AddToDo onAdded=""/>
+          <AddToDo onAdded={this.onAddedprops}/>
           <ol>
-              {taskTable.map( task =>
-                  <Todo name={this.state.todos[task].name} status={this.state.todos[task].isFinished} />)
+              {taskTable.map( (task, key) =>
+                  <Todo key ={key} name={this.state.todos[task].name} status={this.state.todos[task].isFinished} />)
                   }
           </ol>
       </React.Fragment>
@@ -36,3 +41,5 @@ class App extends React.Component {
 }
 
 export default App;
+
+

@@ -10,6 +10,4 @@ render() {
             <li className= {className}> {this.props.name} </li>
         </React.Fragment>
     }
-
-
 }
