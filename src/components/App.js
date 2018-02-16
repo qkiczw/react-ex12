@@ -21,7 +21,7 @@ class App extends React.Component {
 
     onAddedprops = (newTodoFromInput) => {
         let newTodo = {name: newTodoFromInput, isFinished: false};
-        this.setState(() => ({ todos: [...this.state.todos, newTodo]}));
+        this.setState({ todos: [...this.state.todos, newTodo]});
     };
 
     render() {
